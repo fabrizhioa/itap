@@ -8,7 +8,6 @@ import Public from "./pages/Public";
 
 function App() {
 
-  useNavigate()
   return (
     <>
       
@@ -22,3 +21,7 @@ function App() {
 }
 
 export default App;
+
+
+
+

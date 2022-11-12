@@ -1,15 +1,15 @@
 import React from "react";
 import { FaPlus, FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import NoRestaurants from "./NoRestaurants";
+import NoDishes from "./NoDishes";
 
-const ListRestaurants = () => {
-  //Logica de restautantes
-  const Restaurantes = false;
+const ListDishes = () => {
+  //Logica de platillos
+  const Platillos = false;
 
-  return Restaurantes ? (
+  return Platillos ? (
     <div className="flex flex-col p-2 gap-4">
-      <h2 className="w-full text-xl font-medium">Lista de restaurentes</h2>
+      <h2 className="w-full text-xl font-medium">Lista de Platillos</h2>
       <div className="flex flex-wrap gap-2">
         <div className="max-w-[256px] relative group">
           <div className="opacity-0 group-hover:opacity-100 absolute w-full h-full bg-tc/20 text-white flex items-center justify-center">
@@ -44,8 +44,8 @@ const ListRestaurants = () => {
       </div>
     </div>
   ) : (
-    <NoRestaurants />
+    <NoDishes />
   );
 };
 
-export default ListRestaurants;
+export default ListDishes;
