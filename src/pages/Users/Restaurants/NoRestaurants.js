@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import NoDataImage from "../../../assets/users/nodata.svg";
+
 const NoRestaurants = () => {
   return (
     <div className="grid w-full items-center justify-center">

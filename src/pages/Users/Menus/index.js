@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import CreateMenu from "./CreateMenus";
-import NoMenus from "./NoMenux";
+import NoMenus from "./NoMenus";
 
 const Menu = () => {
   return (
