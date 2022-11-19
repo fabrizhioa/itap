@@ -28,15 +28,15 @@ export const InputWithList = ({ value, setValue, type, title }) => {
         {value &&
           value.map((v, key) => (
             <div
-              className="flex justify-between items-center gap-2 group"
+              className="flex justify-between items-center group rounded-md overflow border-collapse "
               key={key}
             >
-              <p className="w-full border-b-2 border-b-c hover:border-b-tg py-2">
+              <p className="w-full p-1 border-red-300 hover:border-red-500 border-2 rounded-l-md group-hover:border-red-500">
                 {v}
               </p>
               <button
                 type="button"
-                className="bg-red-300 text-white hover:bg-red-500 rounde-md w-max rounded-sm h-max font-medium p-2 flex aspect-square "
+                className="bg-red-300 text-white hover:bg-red-500 border-red-300 hover:border-red-500 border-2 rounded-r-md  w-max h-max font-medium py-1 px-2 flex aspect-square "
                 onClick={() => {
                   let val = value;
                   val.splice(key, 1);
@@ -72,31 +72,28 @@ export const InputWithList = ({ value, setValue, type, title }) => {
   );
 };
 
-export const InputSocialsWithList = ({ value, setValue, type, title }) => {
-  const [showInput, setShowInput] = useState(false);
-  const [val, setVal] = useState(value);
-  console.log(val);
-  const input1 = useRef();
-  const input2 = useRef();
+export const InputHours = ({ value, setValue }) => {
+  const [modal, setModal] = useState(false);
   return (
     <div className="w-full">
-      <label className="font-medium block">{title}:</label>
+      <label className="font-medium block">Horarios:</label>
       <div>
         {value &&
           value.map((v, key) => (
             <div
-              className="flex justify-between items-center border-b-2 p-1 border-b-c hover:border-b-tg group"
+              className="flex justify-between items-center group rounded-md overflow border-collapse "
               key={key}
             >
-              <p className="w-full">{v.title}</p>
+              <p className="w-full p-1 border-red-300 hover:border-red-500 border-2 rounded-l-md group-hover:border-red-500">
+                {v.title}
+              </p>
               <button
                 type="button"
-                className="text-c hover:text-tg font-medium"
+                className="bg-red-300 text-white hover:bg-red-500 border-red-300 hover:border-tlred-500 border-2 rounded-r-md  w-max h-max font-medium py-1 px-2 flex aspect-square "
                 onClick={() => {
                   let val = value;
                   val.splice(key, 1);
                   setValue(val);
-                  setVal([...val]);
                 }}
               >
                 X
@@ -104,49 +101,186 @@ export const InputSocialsWithList = ({ value, setValue, type, title }) => {
             </div>
           ))}
       </div>
-      {showInput && (
-        <div className="flex flex-col bg-c/20 rounded-sm p-1 gap-1 mt-1">
-          <div>
-            <span>Red Social</span>
-            <input
-              type="text"
-              className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
-              ref={input1}
-            />
-          </div>
-          <div>
-            <span>Link</span>
-            <input
-              type="text"
-              className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
-              ref={input2}
-            />
-          </div>
-          <button
-            className="bg-c hover:bg-tg hover:text-white rounded-sm font-medium px-2 py-1 text-sm"
-            type="button"
-            onClick={() => {
-              setValue([
-                ...value,
-                { title: input1.current.value, link: input2.current.value },
-              ]);
-              input1.current.value = "";
-              input2.current.value = "";
-              setShowInput(false);
-            }}
-          >
-            Agregar
-          </button>
-        </div>
-      )}
 
       <button
-        className="bg-c hover:bg-tg hover:text-white rounded-sm text-sm p-2 my-1 block w-full"
-        onClick={() => setShowInput(!showInput)}
+        className="bg-c hover:bg-tg hover:text-white rounded-md font-medium p-1 w-full"
         type="button"
+        onClick={() => setModal(true)}
       >
-        {showInput ? "Cancelar" : "Añadir"}
+        Añadir
       </button>
+
+      {modal && (
+        <div className="min-h-screen w-full bg-gray-50/40 top-0 left-0 fixed z-20 flex items-center justify-center">
+          <div className="bg-white shadow-md p-2 rounded-md min-w-[250px] max-w-[90%]">
+            <h2 className="text-tc text-lg font-medium">
+              Agregar nuevo horario
+            </h2>
+            <div className="flex flex-col gap-1">
+              <span className="font-medium">Titulo:</span>
+              <input
+                type="text"
+                className="w-full border-2 border-c focus:border-tg rounded-md outline-none"
+              />
+            </div>
+            <div className="flex flex-col  gap-1">
+              <span className="font-medium">Dias:</span>
+
+              <div className="flex flex-wrap gap-2">
+                <div className="flex gap-2 p-2 border-[1px] rounded-md border-gray-300">
+                  <input type="checkbox" name="lunes" className="accent-tg" />
+                  <span>Lunes</span>
+                </div>
+                <div className="flex gap-2 p-2 border-[1px] rounded-md border-gray-300">
+                  <input type="checkbox" name="martes" className="accent-tg" />
+                  <span>Martes</span>
+                </div>
+                <div className="flex gap-2 p-2 border-[1px] rounded-md border-gray-300">
+                  <input
+                    type="checkbox"
+                    name="miercoles"
+                    className="accent-tg"
+                  />
+                  <span>Miercoles</span>
+                </div>
+                <div className="flex gap-2 p-2 border-[1px] rounded-md border-gray-300">
+                  <input type="checkbox" name="jueves" className="accent-tg" />
+                  <span>Jueves</span>
+                </div>
+                <div className="flex gap-2 p-2 border-[1px] rounded-md border-gray-300">
+                  <input type="checkbox" name="viernes" className="accent-tg" />
+                  <span>Viernes</span>
+                </div>
+                <div className="flex gap-2 p-2 border-[1px] rounded-md border-gray-300">
+                  <input type="checkbox" name="sabados" className="accent-tg" />
+                  <span>Sabados</span>
+                </div>
+                <div className="flex gap-2 p-2 border-[1px] rounded-md border-gray-300">
+                  <input
+                    type="checkbox"
+                    name="domingos"
+                    className="accent-tg"
+                  />
+                  <span>Domingo</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-medium">Hora de inicio:</span>
+              <input
+                type="time"
+                name="inicio"
+                id=""
+                className="w-full border-2 border-c focus:border-tg rounded-md outline-none"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-medium">Hora de cierre:</span>
+              <input
+                type="time"
+                name="cierre"
+                id=""
+                className="w-full border-2 border-c focus:border-tg rounded-md outline-none"
+              />
+            </div>
+            <div className="flex justify-between pt-2">
+              <button
+                type="button"
+                className="py-2 px-2 bg-c hover:bg-tg uppercase hover:text-white hover:cursor-pointer rounded-md shadow-md active:shadow-none shadow-tc/30 font-medium"
+              >
+                agregar
+              </button>
+              <button
+                type="button"
+                className="py-2 px-2 bg-red-500 uppercase hover:bg-red-600 hover:text-white hover:cursor-pointer rounded-md shadow-md active:shadow-none shadow-tc/30 font-medium"
+                onClick={() => setModal(false)}
+              >
+                cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const InputSocialsWithList = ({ title }) => {
+  return (
+    <div className="w-full">
+      <label className="font-medium block">{title}:</label>
+
+      <div>
+        <span>Facebook</span>
+        <input
+          type="text"
+          className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
+          name="facebookURL"
+        />
+      </div>
+      <div>
+        <span>Instagram</span>
+        <input
+          type="text"
+          className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
+          name="instagramURL"
+        />
+      </div>
+      <div>
+        <span>Uber Eats</span>
+        <input
+          type="text"
+          className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
+          name="uberURL"
+        />
+      </div>
+      <div>
+        <span>Rappi</span>
+        <input
+          type="text"
+          className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
+          name="rappiURL"
+        />
+      </div>
+      <div>
+        <span>Trip Advisor</span>
+        <input
+          type="text"
+          className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
+          name="tripURL"
+        />
+      </div>
+      <div>
+        <span>Yelp</span>
+        <input
+          type="text"
+          className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
+          name="yelp"
+        />
+      </div>
+    </div>
+  );
+};
+
+export const InputSelect = ({ title, name, required = true, data }) => {
+  return (
+    <div className="w-full">
+      <label className="font-medium block">{title}:</label>
+      <select
+        name={name}
+        required={required}
+        className="border-2 rounded-md border-c focus:border-tg w-full outline-none p-1 bg-transparent"
+      >
+        {data.map((opt, key) => (
+          <option
+            value={opt.value}
+            key={key}
+            className="hover:bg-tg hover:text-white"
+          >
+            {opt.title}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
@@ -162,10 +296,10 @@ export const InputImage = () => {
   const DropFile = () => (buttonRef.current.textContent = "Subir Imagen");
 
   return (
-    <div className="w-full relative">
+    <div className="w-full  group">
       <span className="block font-medium">Imagen:</span>
       {imageValue !== null ? (
-        <div className="relative aspect-square">
+        <div className="relative aspect-square ">
           <button
             onClick={() => {
               setImageValue(null);
@@ -182,7 +316,7 @@ export const InputImage = () => {
           />
         </div>
       ) : (
-        <>
+        <div className="relative aspect-square">
           <input
             type="file"
             className="w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer"
@@ -194,7 +328,7 @@ export const InputImage = () => {
           />
 
           <div
-            className="w-full aspect-square border-2 border-bc border-dashed hover:border-tg rounded-sm flex flex-col items-center justify-center"
+            className="w-full aspect-square border-2 border-bc border-dashed group-hover:border-tg rounded-md flex flex-col items-center justify-center"
             draggable
             onDragStart={DragStart}
             onDrop={DropFile}
@@ -212,7 +346,7 @@ export const InputImage = () => {
               Clickea o Arrasta una imagen
             </p>
           </div>
-        </>
+        </div>
       )}{" "}
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Form from "../../../components/users/forms/form";
 import {
+  InputHours,
   InputImage,
   InputSocialsWithList,
   InputT,
@@ -34,12 +35,7 @@ const CreateRestaurant = () => {
           type="tel"
           title="Direcciones"
         />
-        <InputWithList
-          value={timesValue}
-          setValue={setTimesValue}
-          type="tel"
-          title="Horarios"
-        />
+        <InputHours value={timesValue} setValue={setTimesValue} />
         <InputSocialsWithList
           value={socialValue}
           setValue={setSocialValue}

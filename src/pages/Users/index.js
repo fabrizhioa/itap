@@ -5,6 +5,7 @@ import Dishes from "./Dishes";
 import Menu from "./Menus";
 import Restaurants from "./Restaurants";
 import Sections from "./Sections";
+import Subadmins from "./Subadminitrators";
 
 const Users = () => {
   return (
@@ -16,6 +17,7 @@ const Users = () => {
         <Route path="platillos/*" element={<Dishes />} />
         <Route path="menus/*" element={<Menu />} />
         <Route path="sections/*" element={<Sections />} />
+        <Route path="subadmins/*" element={<Subadmins />} />
       </Routes>
     </div>
   );

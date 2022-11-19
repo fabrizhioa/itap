@@ -1,10 +1,8 @@
-Inicio de jornada 9/11/2022 9:45am
-Parada 9/11/2022 10:00am
+Inicio 17/11 -> 12:30pm
+Parada 17/11 -> 5:00pm
 
-Inicio 12/11/2022 11:40am
-Parada 12/11/2022 7:00pm
+Inicio 17/11 -> 9:08pm
+Parada 18/11 -> 2:48am
 
-Inicio 13/11/2022 12:30am
-Parada 13/11/2022 2:10am
-
-- 9:20hrs -> 12 + 5 + 5 + 5 + 5 = 32hrs - 9hrs = 22:40hs
+Inicio 19/11 -> 9:12am
+Parada 19/11 -> 11:03am
