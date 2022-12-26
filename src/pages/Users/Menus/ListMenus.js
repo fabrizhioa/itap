@@ -4,16 +4,15 @@ import { FaPlus, FaRegEdit } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 import { Card } from "../../../components/users/Card";
-import NoDishes from "./NoDishes";
+import NoMenus from "./NoMenus";
 
-const ListDishes = () => {
+const ListMenus = () => {
   //Logica de platillos
-  const Platillos = true;
+  const Menus = true;
   const [viewCard, setviewCard] = useState(false);
 
   const [orden, setOrden] = useState(0);
   const [filterRestaurant, setFilterRestaurant] = useState([]);
-  const [filterMenu, setFilterMenu] = useState([]);
   const [filterText, setFilterText] = useState("");
   const [filterTypes, setFilterTypes] = useState([]);
   const searchInput = useRef();
@@ -29,19 +28,6 @@ const ListDishes = () => {
 
     switch (orden) {
       case 1:
-        newlist = newlist.sort((a, b) => {
-          return a.precio > b.precio ? 1 : -1;
-        });
-
-        break;
-
-      case 2:
-        newlist = newlist.sort((a, b) =>
-          new Date(a.fecha).getTime() < new Date(b.fecha).getTime() ? 1 : -1
-        );
-
-        break;
-      case 3:
         newlist = newlist.sort((a, b) =>
           new Date(a.fecha).getTime() > new Date(b.fecha).getTime() ? 1 : -1
         );
@@ -49,7 +35,10 @@ const ListDishes = () => {
         break;
 
       default:
-        newlist = newlist.sort((a, b) => (a.precio < b.precio ? 1 : -1));
+        newlist = newlist.sort((a, b) =>
+          new Date(a.fecha).getTime() < new Date(b.fecha).getTime() ? 1 : -1
+        );
+
         break;
     }
 
@@ -67,12 +56,6 @@ const ListDishes = () => {
       });
     }
 
-    if (filterMenu.length > 0) {
-      filterMenu.map((filter) => {
-        newlist = newlist.filter((platillo) => platillo.menus.includes(filter));
-      });
-    }
-
     if (filterTypes.length > 0) {
       filterTypes.map((filter) => {
         newlist = newlist.filter((platillo) => platillo.menus.includes(filter));
@@ -80,13 +63,6 @@ const ListDishes = () => {
     }
 
     return newlist;
-  };
-  const FilterMenu = (value) => {
-    if (filterMenu.includes(value)) {
-      setFilterMenu(filterMenu.filter((filter) => filter !== value));
-    } else {
-      setFilterMenu([...filterMenu, value]);
-    }
   };
 
   const FilterRestourants = (value) => {
@@ -107,7 +83,7 @@ const ListDishes = () => {
     }
   };
 
-  return Platillos ? (
+  return Menus ? (
     <>
       <div className="flex flex-col p-2 gap-4 relative">
         {viewCard && (
@@ -122,7 +98,7 @@ const ListDishes = () => {
                   type="button"
                   onClick={() => setOrden(0)}
                 >
-                  Mayor a menor
+                  Más reciente
                 </button>
                 <button
                   className={`py-1 px-2 text-sm rounded-md border-2 ${
@@ -130,24 +106,6 @@ const ListDishes = () => {
                   } `}
                   type="button"
                   onClick={() => setOrden(1)}
-                >
-                  Menor a mayor
-                </button>
-                <button
-                  className={`py-1 px-2 text-sm rounded-md border-2 ${
-                    orden === 2 && "border-tg"
-                  } `}
-                  type="button"
-                  onClick={() => setOrden(2)}
-                >
-                  Más reciente
-                </button>
-                <button
-                  className={`py-1 px-2 text-sm rounded-md border-2 ${
-                    orden === 3 && "border-tg"
-                  } `}
-                  type="button"
-                  onClick={() => setOrden(3)}
                 >
                   Más antiguo
                 </button>
@@ -177,30 +135,7 @@ const ListDishes = () => {
                 </button>
               </div>
             </div>
-            {/*Filtros por menu*/}
-            <div>
-              <h4 className="font-medium pb-2">Menus</h4>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  className={`py-1 px-2 text-sm rounded-md border-2 ${
-                    filterMenu.includes("ejemplo1") && "border-tg"
-                  } `}
-                  type="button"
-                  onClick={() => FilterMenu("ejemplo1")}
-                >
-                  Ejemplo 1
-                </button>
-                <button
-                  className={`py-1 px-2 text-sm rounded-md border-2 ${
-                    filterMenu.includes("ejemplo2") && "border-tg"
-                  } `}
-                  type="button"
-                  onClick={() => FilterMenu("ejemplo2")}
-                >
-                  Ejemplo 2
-                </button>
-              </div>
-            </div>
+
             {/*Filtros por tipos*/}
             <div>
               <h4 className="font-medium pb-2">Tipos</h4>
@@ -231,7 +166,7 @@ const ListDishes = () => {
           <div className="flex gap-2 items-center">
             <input
               type="text"
-              placeholder="Buscar platillo"
+              placeholder="Buscar menu"
               className="outline-none px-2 py-1 rounded-md border-2 "
               ref={searchInput}
               onChange={({ target: { value } }) => setFilterText(value)}
@@ -243,7 +178,7 @@ const ListDishes = () => {
       
       "
         >
-          Lista de Platillos{" "}
+          Lista de Menus{" "}
           <button
             className="rounded-md border-2 text-sm p-1 text-gray-300 hover:text-tc hover:border-tc"
             onClick={() => setviewCard(true)}
@@ -276,7 +211,7 @@ const ListDishes = () => {
             </div>
 
             <div className=" p-1 h-[80px] flex items-center justify-center ">
-              <h3 className="font-medium">Titulo del platillo</h3>
+              <h3 className="font-medium">Titulo del menu</h3>
             </div>
           </div>
           <Link
@@ -294,8 +229,8 @@ const ListDishes = () => {
       </div>
     </>
   ) : (
-    <NoDishes />
+    <NoMenus />
   );
 };
 
-export default ListDishes;
+export default ListMenus;
