@@ -26,28 +26,27 @@ const NavBarContent = () => {
         </li>
 
         <li>
-          <NavBarButton href="/benefits" text="Beneficios"/>
+          <NavBarButton href="/benefits" text="Beneficios" />
         </li>
         <li>
-          <NavBarButton href="/shop" text="Productos"/>
+          <NavBarButton href="/shop" text="Productos" />
         </li>
         <li>
-         <NavBarButton href="/services" text="Servicios"/>
+          <NavBarButton href="/services" text="Servicios" />
         </li>
         <li>
-         <NavBarButton href="/about" text="Nosotros" />
-          
+          <NavBarButton href="/about" text="Nosotros" />
         </li>
 
         <li>
-         <NavBarButton href="/contact" text="Contacto"/>
+          <NavBarButton href="/contact" text="Contacto" />
         </li>
       </ul>
     </>
   );
 };
 
-const NavBar = () => {
+const NavBar = ({ cartHandleButton }) => {
   const [open, toggleOpen] = useState(false);
 
   return (
@@ -64,13 +63,14 @@ const NavBar = () => {
           <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-gray-800 transform translate-x-1/2 -translate-y-1/2 bg-gray-300 rounded-full">
             0
           </span>
-          <a
-            href="#_"
-            className="inline-flex overflow-hidden hover:bg-gray-100 text-black bg-[#e9d7a9] rounded group"
+          <button
+            type="button"
+            onClick={cartHandleButton}
+            className="inline-grid grid-cols-[max-content,auto] shadow-md auto-rows-auto overflow-hidden hover:bg-gray-100 text-black bg-[#e9d7a9] rounded group"
           >
-            <span className="px-3.5 py-2 text-gray-800 bg-gray-400  flex items-center justify-center">
+            <span className="p-2  text-gray-800 bg-gray-400 h-full aspect-square flex items-center justify-center group-hover:bg-tg">
               <svg
-                className="w-5 h-5"
+                className="w-5 h-5 block group-hover:text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ const NavBar = () => {
               </svg>
             </span>
             <span className="pl-4 pr-5 py-2.5">Ordenes</span>
-          </a>
+          </button>
         </span>
       </div>
 

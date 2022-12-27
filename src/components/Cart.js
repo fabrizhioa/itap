@@ -2,12 +2,16 @@ import React from "react";
 import { MdArrowForward, MdArrowRight, MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-export const Cart = () => {
+export const Cart = ({ closeButtonAction, isActive }) => {
   return (
-    <div className="fixed right-0 top-0 z-[51] bg-[#dfdfdf] h-screen w-64 shadow-md grid grid-rows-[max-content,auto,max-content] flex-col gap-2">
-      <div className="flex place-content-between p-2">
+    <div
+      className={`fixed ${
+        isActive ? "right-0 bottom-0" : "-right-full -bottom-full"
+      } transition-all duration-500 bottom-0 z-[51] bg-[#f5f5f5] max-h-screen h-max w-64 shadow-md drop-shadow-md grid grid-rows-[max-content,auto,max-content] flex-col gap-2 rounded-tl-md overflow-hidden`}
+    >
+      <div className="flex place-content-between py-2 px-4 ">
         <h2 className="font-semibold text-lg">Carrito de compras</h2>
-        <button className="text-xl">
+        <button className="text-xl" onClick={closeButtonAction} type="button">
           <MdClose />
         </button>
       </div>

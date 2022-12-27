@@ -11,12 +11,14 @@ import Contact from "./Contact";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import { Cart } from "../../components/Cart";
+import { useState } from "react";
 
 const Public = () => {
+  const [viewCart, setViewCart] = useState(false);
   return (
     <>
-      <NavBar />
-      <Cart />
+      <NavBar cartHandleButton={() => setViewCart(true)} />
+      <Cart isActive={viewCart} closeButtonAction={() => setViewCart(false)} />
       <Routes>
         <Route path="/" end element={<Home />} />
         <Route path="/shop/*" element={<Shop />} />
