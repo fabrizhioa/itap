@@ -6,7 +6,7 @@ import imagenes from "../assets/imagenes";
 
 const NavBarButton = ({ href = false, text }) => {
   const className =
-    "block py-2 pr-4 pl-3  ease-in duration-300   text-lg md:text-base font-extralight text-gray-100 md:text-gray-900 rounded  hover:bg-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-gray-50  md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent";
+    "block py-2 pr-4 pl-3  ease-in duration-300   text-lg md:text-base font-extralight text-gray-100 md:text-gray-900 rounded   hover:bg-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-gray-50  md:p-0 ";
 
   return href !== false ? (
     <Link to={href} className={className}>
@@ -20,7 +20,7 @@ const NavBarButton = ({ href = false, text }) => {
 const NavBarContent = () => {
   return (
     <>
-      <ul className="flex flex-col p-2   mt-4  bg-gray-700 md:bg-[#dfdfdf]  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <ul className="flex flex-col p-2   mt-4 md:bg-[#dfdfdf]  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
         <li>
           <NavBarButton href="/" text="Inicio" />
         </li>
@@ -89,7 +89,7 @@ const NavBar = ({ cartHandleButton }) => {
         </span>
       </div>
 
-      <nav className="  px-2 sm:px-4 py-2 rounded dark:bg-gray-900">
+      <nav className="  px-2 sm:px-4 py-2 rounded">
         <div className="container flex flex-wrap justify-between  md:justify-center items-center mx-auto">
           <button
             onClick={() => toggleOpen(!open)}

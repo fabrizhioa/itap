@@ -24,6 +24,7 @@ const ListDishes = () => {
   //un espaciado de menus en los que se muestra llamado "menus"
   //un espaciado de tipos a los que pertenece llamado "tipos"
 
+  //eslint-disable-next-line
   const FilteredList = (list) => {
     let newlist = list;
 
@@ -60,7 +61,7 @@ const ListDishes = () => {
     }
 
     if (filterRestaurant.length > 0) {
-      filterRestaurant.map((filter) => {
+      filterRestaurant.forEach((filter) => {
         newlist = newlist.filter((platillo) =>
           platillo.restaurants.includes(filter)
         );
@@ -68,13 +69,13 @@ const ListDishes = () => {
     }
 
     if (filterMenu.length > 0) {
-      filterMenu.map((filter) => {
+      filterMenu.forEach((filter) => {
         newlist = newlist.filter((platillo) => platillo.menus.includes(filter));
       });
     }
 
     if (filterTypes.length > 0) {
-      filterTypes.map((filter) => {
+      filterTypes.forEach((filter) => {
         newlist = newlist.filter((platillo) => platillo.menus.includes(filter));
       });
     }
@@ -256,7 +257,7 @@ const ListDishes = () => {
             <div className="relative group">
               <div className="opacity-0 group-hover:opacity-100 absolute w-full h-full bg-tc/20 text-white flex items-center justify-center">
                 <a
-                  href="#"
+                  href="./#"
                   className="p-2 border-[1px] rounded-sm hover:bg-slate-50/20"
                 >
                   Visitar

@@ -1,5 +1,5 @@
 import React from "react";
-import { MdArrowForward, MdArrowRight, MdClose } from "react-icons/md";
+import { MdArrowForward, MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export const Cart = ({ closeButtonAction, isActive }) => {
@@ -7,18 +7,20 @@ export const Cart = ({ closeButtonAction, isActive }) => {
     <div
       className={`fixed ${
         isActive ? "right-0 bottom-0" : "-right-full -bottom-full"
-      } transition-all duration-500 bottom-0 z-[51] bg-[#f5f5f5] max-h-screen h-max w-64 shadow-md drop-shadow-md grid grid-rows-[max-content,auto,max-content] flex-col gap-2 rounded-tl-md overflow-hidden`}
+      } transition-all duration-500 bottom-0 z-[51] bg-[#f5f5f5] max-h-screen h-max w-72 shadow-md drop-shadow-md grid grid-rows-[max-content,auto,max-content] flex-col rounded-tl-md overflow-hidden `}
     >
-      <div className="flex place-content-between py-2 px-4 ">
-        <h2 className="font-semibold text-lg">Carrito de compras</h2>
+      <div className="flex justify-between p-2 items-center ">
+        <h2 className="font-semibold text-tg text-lg drop-shadow-sm">
+          Carrito de compras
+        </h2>
         <button className="text-xl" onClick={closeButtonAction} type="button">
           <MdClose />
         </button>
       </div>
-      <div className="flex gap-2 w-full px-2">
-        <div className="grid grid-cols-[max-content_auto] gap-2 place-content-between  py-2  shadow-sm border-tc px-2 w-full h-max bg-white rounded-md">
-          <div className="bg-tc rounded-md aspect-square w-16 inline-block"></div>
-          <div className="grid grid-cols-2 auto-rows-auto gap-2 w-full">
+      <div className="flex gap-2 w-full pb-2">
+        <div className="grid grid-cols-[max-content,auto] gap-2 border-b-2 border-tc p-2 w-full h-max">
+          <div className="bg-tc rounded-md aspect-square h-16 w-16 inline-block"></div>
+          <div className="grid grid-cols-[minmax(0,1fr),max-content] auto-rows-auto place-content-center gap-3">
             <div>
               <h3 className="font-medium text-sm">Elemento 1</h3>
               <p className="text-xs">Color</p>
@@ -33,7 +35,7 @@ export const Cart = ({ closeButtonAction, isActive }) => {
           </div>
         </div>
       </div>
-      <div className="justify-self-end self-end flex flex-col gap-2 p-2 bg-white shadow-sm">
+      <div className="justify-self-end self-end flex flex-col gap-2 p-2 bg-tc text-white shadow-sm">
         <div className="flex gap-2 place-content-between p-1">
           <div className="">
             <h2 className="font-semibold text-lg">Subtotal</h2>

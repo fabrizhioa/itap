@@ -3,7 +3,7 @@ import imagenes from "../../assets/imagenes";
 
 const Hero = () => {
   return (
-    <section className="px-  bg-Neutral-200 md:px-0 bg-[#dfdfdf]">
+    <section className="bg-Neutral-200 md:px-0 bg-[#dfdfdf]">
       <div className="max-w-full  sm:py-10 py-6 sm:px-4 lg:px-6 font-momo font-semibold sm:text-center">
         <p className=" lg:text-5xl text-3xl p-2 text-center  text-gray-900 s">
           La evolución del Menú se encuentra aquí{" "}
